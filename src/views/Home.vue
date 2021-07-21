@@ -1,18 +1,18 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <ledger-create> </ledger-create>
+    <ledger-table> </ledger-table>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
+import LedgerTable from '@/components/LedgerTable.vue'
+import LedgerCreate from '@/components/LedgerCreate.vue'
 export default {
-  name: 'Home',
   components: {
-    HelloWorld
+    LedgerTable,
+    LedgerCreate
   }
 }
 </script>

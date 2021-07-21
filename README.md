@@ -1,4 +1,4 @@
-# vuehw1
+# Simple Vue
 
 ## Project setup
 ```
