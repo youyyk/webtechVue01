@@ -1,6 +1,7 @@
 <template>
   <div>
     <ledger-create> </ledger-create>
+    <br>
     <ledger-table> </ledger-table>
   </div>
 </template>

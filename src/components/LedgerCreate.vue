@@ -2,7 +2,7 @@
   <div>
       <div>
          <label for="atDate">วันที่ : </label>
-         <input type="text" v-model="form.atDate">
+         <input type="date" v-model="form.atDate">
 
          <label for="incomeList"> รายการรายรับ : </label>
          <input type="text" v-model="form.incomeList">
@@ -26,7 +26,6 @@ export default {
                 atDate: "",
                 incomeList: "",
                 expendList: "",
-                totalDay: 0
             }
         }
     },
@@ -39,15 +38,35 @@ export default {
                 totalDay: 0
             }
         },
-        addLedger(){
+        async addLedger(){
+            let tempIn = this.form.incomeList.split(",").map(
+                (item=>item.trim())
+            )
+            let tempOut = this.form.expendList.split(",").map(
+                (item=>item.trim())
+            )
             let payload={
                 atDate: this.form.atDate,
-                incomeList: this.form.incomeList,
-                expendList: this.form.expendList,
-                totalDay: this.form.totalDay
+                incomeList: tempIn.join(", "),
+                expendList: tempOut.join(", "),
+                totalDay: await this.calTotalDay(tempIn,tempOut)
             }
             LedgerInfo.dispatch("addLedger",payload)
             this.clearFiled()
+        },
+        async calTotalDay(income,expend){
+            let tempIncome = 0
+            income.forEach(element => {
+                tempIncome += parseInt(element.split(":").map(
+                    (item => item.trim())
+                )[1])
+            });
+            expend.forEach(element => {
+                tempIncome -= parseInt(element.split(":").map(
+                    (item => item.trim())
+                )[1])
+            });
+            return tempIncome
         }
     }
 
