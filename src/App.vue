@@ -1,9 +1,10 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/"> <h1>--- LEDGER ---</h1></router-link>
+    <div class="container" id="nav">
+      <h1><b>รายรับ-รายจ่าย</b></h1>
+      <br>
+      <router-view></router-view>
     </div>
-    <router-view/>
   </div>
 </template>
 
@@ -17,7 +18,7 @@
 }
 
 #nav {
-  padding: 30px;
+  padding: 30px 0px;
 
   a {
     font-weight: bold;
@@ -27,5 +28,6 @@
       color: #42b983;
     }
   }
+
 }
 </style>

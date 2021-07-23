@@ -1,18 +1,20 @@
 <template>
   <div>
       <div>
-         <label for="atDate">วันที่ : </label>
-         <input type="date" v-model="form.atDate">
+         <label for="atDate">วันที่:</label>&nbsp; 
+         <input type="date" v-model="form.atDate">&nbsp; 
 
-         <label for="incomeList"> รายการรายรับ : </label>
-         <input type="text" v-model="form.incomeList">
+         <label for="incomeList"> รายการรายรับ:</label>&nbsp; 
+         <input type="text" v-model="form.incomeList">&nbsp; 
 
-         <label for="expendList"> รายการรายจ่าย : </label>
+         <label for="expendList"> รายการรายจ่าย:</label>&nbsp; 
          <input type="text" v-model="form.expendList">
       </div>
       <br>
-      <div>
-          <button @click="addLedger"> ยืนยันรายการ </button>
+      <div class="d-grid gap-2 col-6 mx-auto">
+          <button @click="addLedger" class="btn btn-success" id="btnConfirmฺ">
+              ยืนยันรายการ
+          </button>
       </div>
   </div>
 </template>
@@ -73,6 +75,8 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped lang="scss">
+#btnConfirmฺ{
+    font-size: 1.2em;
+}
 </style>

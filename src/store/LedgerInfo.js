@@ -26,19 +26,19 @@ export default new Vuex.Store({
       fetchLedgers({commit}){
         let res = [
                 {
-                    atDate: "01/01/2564",
+                    atDate: "2021-01-01",
                     incomeList: "ค่าขนม: 200, ขายรองเท้่า: 500",
                     expendList: "ข้าว 3 มื้อ: 120, ค่าเดินทาง: 110",
                     totalDay: 200+500-(120+110)
                 },
                 {
-                    atDate: "03/05/2564",
+                    atDate: "2021-03-05",
                     incomeList: "ค่าขนม: 200, ขายหุ้น: 5000",
                     expendList: "ข้าว 3 มื้อ: 120",
                     totalDay: 200+5000-120
                 },
                 {
-                    atDate: "09/07/2564",
+                    atDate: "2021-04-12",
                     incomeList: "ค่าขนม: 200",
                     expendList: "ข้าว 3 มื้อ: 120, ค่าเดินทาง: 110",
                     totalDay: 200-(120+110)

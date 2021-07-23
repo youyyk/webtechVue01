@@ -1,12 +1,14 @@
 <template>
-  <div>
-    <table>
+  <div class="tableLedger">
+    <br>
+    <table class="table table-hover">
         <thead>
             <tr>
                 <th>วันที่</th>
                 <th>รายรับ</th>
                 <th>รายจ่าย</th>
                 <th>สรุป</th>
+                <th>แก้ไข</th>
             </tr>
         </thead>
 
@@ -17,7 +19,7 @@
                     <input type="date" v-model="form.atDate">
                 </td>
 
-                <td v-if="index!==editIndex">{{led.incomeList}}</td>
+                <td class="text-break" v-if="index!==editIndex">{{led.incomeList}}</td>
                 <td v-if="index===editIndex">
                     <input type="text" v-model="form.incomeList">
                 </td>
@@ -30,23 +32,25 @@
                 <td>{{led.totalDay}}</td>
 
                 <td v-if="index!==editIndex">
-                    <button @click="openForm(index, led)">Edit</button>
+                    <button @click="openForm(index, led)" class="btn btn-primary btn-sm">Edit</button>
                 </td>
 
                 <td v-if="index===editIndex">
-                    <button @click="editLedger">Confirm</button>
-                    <button @click="closeForm">Cancel</button>
+                    <button @click="editLedger" class="btn btn-primary btn-sm">Confirm</button>&nbsp;
+                    <button @click="closeForm" class="btn btn-primary btn-sm">Cancel</button>
                 </td>
             </tr>
         </tbody>
-        <tr v-if="calTotalAll(this.ledgers.length)"> 
-                {{this.totalAll}}
-        </tr>
-        <tr v-else>
-                {{this.totalAll}}
-        </tr>
-     
+        <br>
     </table>
+    <div class="p-3 mb-2 bg-warning text-dark" id="divTotal">
+        <div v-if="calTotalAll(this.ledgers.length)"> 
+                <b>Total: {{this.totalAll}} ฿</b>
+        </div>
+        <div v-else>
+                <b>Total: {{this.totalAll}} ฿</b>
+        </div>
+    </div>
   </div>
 </template>
 
@@ -141,18 +145,25 @@ export default {
 </script>
 
 <style scoped lang="scss">
-table,th,td{
-    border: 1px solid black;
-    border-collapse: collapse;
+table{
+    font-size: 1.2em;
+    width: 100%;
 }
-th{
-    padding: 0px 45px 0px 45px;
+#divTotal{
+    font-size: 2em;
 }
-tr{
-    height: 40px;
-}
-td{
-    padding: 2em;
-}
+// table,th,td{
+//     border: 1px solid black;
+//     border-collapse: collapse;
+// }
+// th{
+//     padding: 0px 45px 0px 45px;
+// }
+// tr{
+//     height: 40px;
+// }
+// td{
+//     padding: 2em;
+// }
 
 </style>
