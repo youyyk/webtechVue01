@@ -21,12 +21,12 @@
 
                 <td class="text-break" v-if="index!==editIndex">{{led.incomeList}}</td>
                 <td v-if="index===editIndex">
-                    <input type="text" v-model="form.incomeList">
+                    <input type="text" v-model="form.incomeList" placeholder="A: 5000, B: 500">
                 </td>
 
                 <td v-if="index!==editIndex">{{led.expendList}}</td>
                 <td v-if="index===editIndex">
-                    <input type="text" v-model="form.expendList">
+                    <input type="text" v-model="form.expendList" placeholder="A: 5000, B: 500">
                 </td>
 
                 <td>{{led.totalDay}}</td>
@@ -43,12 +43,12 @@
         </tbody>
         <br>
     </table>
-    <div class="p-3 mb-2 bg-warning text-dark" id="divTotal">
+    <div class="p-3 mb-2 bg-warning text-dark rounded-3" id="divTotal">
         <div v-if="calTotalAll(this.ledgers.length)"> 
-                <b>Total: {{this.totalAll}} ฿</b>
+                <b>รวม {{this.totalAll}} บาท</b>
         </div>
-        <div v-else>
-                <b>Total: {{this.totalAll}} ฿</b>
+        <div>
+                <b>รวม {{this.totalAll}} บาท</b>
         </div>
     </div>
   </div>
@@ -138,8 +138,9 @@ export default {
             this.ledgers.forEach(element => {
                 this.totalAll += parseInt(element.totalDay)
             })
+            this.totalAll = this.totalAll.toLocaleString()
             return true
-        }
+        },
     }
 }
 </script>
@@ -152,18 +153,5 @@ table{
 #divTotal{
     font-size: 2em;
 }
-// table,th,td{
-//     border: 1px solid black;
-//     border-collapse: collapse;
-// }
-// th{
-//     padding: 0px 45px 0px 45px;
-// }
-// tr{
-//     height: 40px;
-// }
-// td{
-//     padding: 2em;
-// }
 
 </style>

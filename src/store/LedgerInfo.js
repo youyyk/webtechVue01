@@ -15,7 +15,7 @@ export default new Vuex.Store({
         state.dataLedger = res
     },
     add(state, {payload}){
-        state.dataLedger.push(payload)
+        state.dataLedger.unshift(payload)
     },
     edit(state, {payload}){
         state.dataLedger[payload.index] = payload.dataLedger
@@ -26,23 +26,23 @@ export default new Vuex.Store({
       fetchLedgers({commit}){
         let res = [
                 {
-                    atDate: "2021-01-01",
-                    incomeList: "ค่าขนม: 200, ขายรองเท้่า: 500",
-                    expendList: "ข้าว 3 มื้อ: 120, ค่าเดินทาง: 110",
-                    totalDay: 200+500-(120+110)
+                    atDate: "2021-04-12",
+                    incomeList: "ค่าขนม: 200, เงินรางวัล: 1500",
+                    expendList: "ค่าเดินทาง: 93, ค่าอาหาร: 80, ค่าน้ำ: 20",
+                    totalDay: 200+1500-(93+80+20)
                 },
                 {
                     atDate: "2021-03-05",
-                    incomeList: "ค่าขนม: 200, ขายหุ้น: 5000",
-                    expendList: "ข้าว 3 มื้อ: 120",
-                    totalDay: 200+5000-120
+                    incomeList: "ค่าขนม: 200, ขายจอคอม: 2500",
+                    expendList: "ค่าอาหาร: 120, ซื้อของออนไลน์: 520",
+                    totalDay: 200+2500-(120+520)
                 },
                 {
-                    atDate: "2021-04-12",
+                    atDate: "2021-01-01",
                     incomeList: "ค่าขนม: 200",
-                    expendList: "ข้าว 3 มื้อ: 120, ค่าเดินทาง: 110",
-                    totalDay: 200-(120+110)
-                }
+                    expendList: "ค่าอาหาร: 250, ค่ายา: 2150",
+                    totalDay: 200-(250+2150)
+                },
             ]
         commit("fetch",{res})
       },

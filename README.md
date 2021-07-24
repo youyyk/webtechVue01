@@ -1,19 +1,30 @@
 # Simple Vue
+> Yutithorn Kiengkailoet
+>  
+> 6210450148
 
-## Project setup
+## install
 ```
+git clone https://github.com/youyyk/webtechVue01.git
 npm install
 ```
-
-### Compiles and hot-reloads for development
+### Run for development
 ```
 npm run serve
 ```
-
-### Compiles and minifies for production
+### Run for production
 ```
 npm run build
 ```
+## Features
+ - สามารถเพิ่มบันทึกรายรับ-รายจ่าย ได้จากแบบฟอร์มที่ให้กรอกด้านบน
+ - สามารถแก้ไขรายการได้ด้วยการกด Edit ด้านหลังของแถวนั้นๆในตาราง
+ - แสดงยอดเงินเก็บรวมจากบันทึกรายรับ-รายจ่ายทั้งหมด
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Note
+เงื่อนไขการใส่รายการรายรับ-รายจ่าย
+ - ต้องใช้ : คั้นระหว่างชื่อรายการกับจำนวนเงิน โดยจำนวนเงินห้ามมี , 
+ - ต้องใช้ , คั้นระหว่างรายการกับรายการกันเอง
+ - ค่าเงินเป็น บาท
+ - ถ้าในกรณีไม่ต้องการใส่รายการใดๆ ให้ทิ้งเป็นช่องว่าง หรือ ใส่ - อย่างเดียว
+ตัวอย่าง A: 5000, B: 500 เป็นต้น
