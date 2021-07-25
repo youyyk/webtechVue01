@@ -69,14 +69,14 @@ export default {
             let tempIncome = 0
             
             income.forEach(element => {
-                tempIncome += parseInt(element.split(":").map(
+                tempIncome += Math.abs(parseInt(element.split(":").map(
                     (item => item.trim())
-                )[1])
+                )[1]))
             });
             expend.forEach(element => {
-                tempIncome -= parseInt(element.split(":").map(
+                tempIncome -= Math.abs(parseInt(element.split(":").map(
                     (item => item.trim())
-                )[1])
+                )[1]))
             });
             return tempIncome
         }

@@ -31,19 +31,19 @@ export default new Vuex.Store({
                     atDate: "2021-04-12",
                     incomeList: "ค่าขนม: 200, เงินรางวัล: 1500",
                     expendList: "ค่าเดินทาง: 90, ค่าอาหาร: 80, ค่าน้ำ: 20",
-                    totalDay: 200+1500-(90+80+20)
+                    totalDay: 1510
                 },
                 {
                     atDate: "2021-03-05",
                     incomeList: "ค่าขนม: 200, ขายจอคอม: 2500",
                     expendList: "ค่าอาหาร: 120, ซื้อของออนไลน์: 520",
-                    totalDay: 200+2500-(120+520)
+                    totalDay: 2060
                 },
                 {
                     atDate: "2021-01-01",
                     incomeList: "ค่าขนม: 200",
                     expendList: "ค่าอาหาร: 250, ค่ายา: 2150",
-                    totalDay: 200-(250+2150)
+                    totalDay: -2200
                 },
             ]
         commit("fetch",{res})

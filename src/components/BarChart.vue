@@ -3,13 +3,16 @@
 
   export default {
     extends: Bar,
+    
     data () {
       return {
+        // incomeList: 100000,
+        // expendList: 500000,
         chartData: {
           labels: ["รายรับ","รายจ่าย"],
           datasets: [
             {
-              data: [20000, 5000],
+              data: [1,2],
               backgroundColor: ["green","red"],
             },
           ]
@@ -45,6 +48,9 @@
     },
     mounted () {
       this.renderChart(this.chartData, this.options)
+    },
+    methods:{
+
     }
   }
 </script>

@@ -51,13 +51,21 @@
                 <b>รวม {{this.totalAll}} บาท</b>
         </div>
     </div>
+    <!--
+    <div>
+        <bar-chart ref="barchart"></bar-chart>
+    </div>
+    -->
   </div>
 </template>
 
 <script>
 import LedgerInfo from '@/store/LedgerInfo.js'
-import { Chart } from 'chart.js/types/index.esm'
+import BarChart from '@/components/BarChart'
 export default {
+    components: {
+        BarChart,
+    },
     data(){
         return{
             ledgers: [],
@@ -78,8 +86,8 @@ export default {
         fetchLedger(){
           LedgerInfo.dispatch('fetchLedgers')
           this.ledgers = LedgerInfo.getters.ledgers
-          this.calTotalAll()
           this.size = this.ledgers.length
+          this.calTotalAll()
         },
         openForm(index, ledger){
             this.editIndex = index
@@ -111,10 +119,8 @@ export default {
                 tempOut = tempOut.split(",").map(
                     (item=>item.trim())
                 )
-
             else
                 tempOut = ["empty: 0"]
-
             let payload = {
                 index: this.editIndex,
                 dataLedger:{
@@ -127,18 +133,20 @@ export default {
             LedgerInfo.dispatch("editLedger",payload)
             this.closeForm()
             this.size -= 1
+            this.$refs.barchart.chartData.datasets.data = [5555,6666]
+            this.$refs.barchart.$forceUpdate()
         },
         async calTotalDay(income,expend){
             let tempIncome = 0
             income.forEach(element => {
-                tempIncome += parseInt(element.split(":").map(
+                tempIncome += Math.abs(parseInt(element.split(":").map(
                     (item => item.trim())
-                )[1])
+                )[1]))
             });
             expend.forEach(element => {
-                tempIncome -= parseInt(element.split(":").map(
+                tempIncome -= Math.abs(parseInt(element.split(":").map(
                     (item => item.trim())
-                )[1])
+                )[1]))
             });
             return tempIncome
         },
