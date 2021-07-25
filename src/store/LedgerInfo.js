@@ -15,10 +15,12 @@ export default new Vuex.Store({
         state.dataLedger = res
     },
     add(state, {payload}){
-        state.dataLedger.unshift(payload)
+        state.dataLedger.push(payload)
+        state.dataLedger.sort((a,b) => (b.atDate > a.atDate) ? 1 : ((a.atDate > b.atDate) ? -1 : 0))
     },
     edit(state, {payload}){
         state.dataLedger[payload.index] = payload.dataLedger
+        state.dataLedger.sort((a,b) => (b.atDate > a.atDate) ? 1 : ((a.atDate > b.atDate) ? -1 : 0))
     },
 
   },
@@ -28,8 +30,8 @@ export default new Vuex.Store({
                 {
                     atDate: "2021-04-12",
                     incomeList: "ค่าขนม: 200, เงินรางวัล: 1500",
-                    expendList: "ค่าเดินทาง: 93, ค่าอาหาร: 80, ค่าน้ำ: 20",
-                    totalDay: 200+1500-(93+80+20)
+                    expendList: "ค่าเดินทาง: 90, ค่าอาหาร: 80, ค่าน้ำ: 20",
+                    totalDay: 200+1500-(90+80+20)
                 },
                 {
                     atDate: "2021-03-05",
@@ -50,7 +52,6 @@ export default new Vuex.Store({
         commit("add",{payload})
       },
       editLedger({commit}, payload){
-        console.log(payload)
         commit("edit",{payload})
       },
   },

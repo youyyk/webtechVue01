@@ -56,6 +56,7 @@
 
 <script>
 import LedgerInfo from '@/store/LedgerInfo.js'
+import { Chart } from 'chart.js/types/index.esm'
 export default {
     data(){
         return{
@@ -96,13 +97,24 @@ export default {
             }
         },
         async editLedger(){
-            console.log(this.ledgers[this.editIndex])
-            let tempIn = this.form.incomeList.split(",").map(
-                (item=>item.trim())
-            )
-            let tempOut = this.form.expendList.split(",").map(
-                (item=>item.trim())
-            )
+            let tempIn = this.form.incomeList
+            let tempOut = this.form.expendList
+
+            if(this.form.incomeList!=="-" && this.form.incomeList)
+                tempIn = tempIn.split(",").map(
+                    (item=>item.trim())
+                )
+            else
+                tempIn = ["empty: 0"]
+
+            if(this.form.expendList!=="-" && this.form.expendList)
+                tempOut = tempOut.split(",").map(
+                    (item=>item.trim())
+                )
+
+            else
+                tempOut = ["empty: 0"]
+
             let payload = {
                 index: this.editIndex,
                 dataLedger:{

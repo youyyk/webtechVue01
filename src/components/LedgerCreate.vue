@@ -37,13 +37,11 @@ export default {
                 atDate: "",
                 incomeList: "",
                 expendList: "",
-                totalDay: 0
             }
         },
         async addLedger(){
             let tempIn = this.form.incomeList
             let tempOut = this.form.expendList
-            // console.log("Test"+thi+"")
             if(this.form.incomeList!=="-" && this.form.incomeList)
                 tempIn = tempIn.split(",").map(
                     (item=>item.trim())
@@ -51,12 +49,13 @@ export default {
             else
                 tempIn = ["empty: 0"]
 
-            if(this.form.expendList!=="-" && this.form.incomeList)
+            if(this.form.expendList!=="-" && this.form.expendList)
                 tempOut = tempOut.split(",").map(
                     (item=>item.trim())
                 )
             else
                 tempOut = ["empty: 0"]
+
             let payload={
                 atDate: this.form.atDate,
                 incomeList: tempIn.join(", "),
